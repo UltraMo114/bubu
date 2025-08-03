@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原谅我</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Store sticker data for JavaScript -->
+    <script id="stickers-data" type="application/json">
+        {{ stickers | tojson }}
+    </script>
+    
+    <div class="container">
+        <h1 class="apology-text">你能不能原谅我？</h1>
+        
+        <div class="sticker-container">
+            <img id="current-sticker" src="{{ url_for('static', filename='sticker/' + stickers[0]) }}" alt="Sticker" class="sticker">
+        </div>
+        
+        <div class="button-container">
+            <button id="forgive-btn" class="btn forgive-btn">原谅</button>
+            <button id="not-forgive-btn" class="btn not-forgive-btn">不原谅</button>
+        </div>
+        
+        <div id="final-message" class="final-message hidden">
+            <img src="{{ url_for('static', filename='sticker/sticker_1.gif') }}" alt="Final Sticker" class="final-sticker">
+            <h2>那我们和好吧</h2>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
